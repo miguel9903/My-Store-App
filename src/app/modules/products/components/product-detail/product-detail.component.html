@@ -1,0 +1,22 @@
+<div class="product-detail">
+    <div class="product-image">
+        <img [src]="product.image" [alt]="product.name" class="product__image">
+    </div>
+    <div class="product-info">
+        <h2 class="product-title">Información del producto</h2>
+        <ul class="product-info-list">
+            <li class="product-info-list__item">
+                <b>Nombre: </b>{{ product.name }}
+            </li>
+            <li class="product-info-list__item">
+                <b>Descripción: </b>{{ product.description }}
+            </li>
+            <li class="product-info-list__item">
+                <b>Precio: </b>{{ product.price | currency}}
+            </li>
+        </ul>
+        <button class="back-button" routerLink="/products">
+            <i class="fa fa-arrow-left"></i> Regresar
+        </button>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+.products-list {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr;
+}
+
+/* Media Queries */
+
+@media screen and (min-width: 450px) {
+    .products-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 620px) {
+    .products-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (min-width: 790px) {
+    .products-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
