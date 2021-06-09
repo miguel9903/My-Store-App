@@ -1,0 +1,39 @@
+<div class="list">
+    <h1 class="list__title">{{ model | titlecase}}</h1>
+    <button class="list__button" [routerLink]="['/admin', 'create', model]">
+        <i class="fa fa-plus"></i> Crear
+    </button>
+    <div class="spinner" *ngIf="loading"></div>
+    <table class="list-table" *ngIf="results.length > 0">
+        <thead>
+            <tr class="list-table__row">
+                <th class="list-table__heading">#</th>
+                <th class="list-table__heading">Nombre</th>
+                <th class="list-table__heading" *ngIf="model === 'products'">Descripción</th>
+                <th class="list-table__heading">Estado</th>
+                <th class="list-table__heading">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="list-table__row" 
+                *ngFor="let result of results; let i = index">
+                <td class="list-table__data">{{ i + 1 }}</td>
+                <td class="list-table__data">{{ result.name }}</td>
+                <td class="list-table__data" *ngIf="model === 'products'">{{ result.description }}</td>
+                <td class="list-table__data">{{ result.status }}</td>
+                <td class="list-table__data">
+                    <i class="fa fa-edit list-table__option update-option" 
+                       title="Editar"
+                       [routerLink]="['/admin', 'update', model, result._id]"></i>
+                    <i class="fa fa-image list-table__option update-image-option " 
+                       title="Actualizar imagen"
+                       [routerLink]="['/admin', 'update-image', model, result._id]"
+                       *ngIf="model === 'products' || model === 'users'"></i>
+                    <i class="fa fa-trash list-table__option delete-option " 
+                       title="Eliminar"
+                       (click)="deleteModel(result._id, i)"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

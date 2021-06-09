@@ -1,68 +1,62 @@
 import { Injectable } from '@angular/core';
-import { Product } from 'src/app/models/product.model';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '../../../../../environments/environment.prod';
+
+// Models
+import { AuthService } from '../auth/auth.service';
+import { SearchResponse } from 'src/app/models/search.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
-  products: Product[];
+  private baseURL: String;
 
-  constructor() { 
-
-    this.products = [
-      {
-        id: 1,
-        name: 'Camiseta',
-        description: 'Camiseta Azul de Platzi',
-        price: 129000,
-        image: 'assets/images/camiseta.png'
-      },
-      {
-        id: 2,
-        name: 'Hoodie',
-        description: 'Buzo Azul del Platzi',
-        price: 259000,
-        image: 'assets/images/hoodie.png'
-      },
-      {
-        id: 3,
-        name: 'Mug',
-        description: 'Mug Blanco de Platzi',
-        price: 65000,
-        image: 'assets/images/mug.png'
-      },
-      {
-        id: 4,
-        name: 'Pin',
-        description: 'Pins Metálicos de Platzi',
-        price: 25000,
-        image: 'assets/images/pin.png'
-      },
-      {
-        id: 5,
-        name: 'Stickers pequeños',
-        description: 'Stickers Pequeños de Platzi',
-        price: 10000,
-        image: 'assets/images/stickers1.png'
-      },
-      {
-        id: 6,
-        name: 'Stickers grandes',
-        description: 'Stickers Grandes de Platzi',
-        price: 10000,
-        image: 'assets/images/stickers2.png'
-      }
-    ];
-
-  }
-  
-  getProducts(): Product[] {
-    return this.products;
+  httpOptions = {
+    headers: new HttpHeaders({
+     'Content-type': 'application/json; charset=UTF-8',
+     'x-token': this.authService.getUserToken()
+    })
   }
 
-  getProduct(id: number): any {
-    return this.products.find(p => p.id === id);
+  constructor( private http: HttpClient,
+               private authService: AuthService ) { 
+
+    this.baseURL = environment.api_url;
+
   }
 
+  // ----------------- Models ----------------- //
+
+  getModels(collection: string): any {
+    return this.http.get(`${this.baseURL}/${collection}?start=0&limit=50`);
+  }
+
+  getModel(collection: string, id: string): any {
+    return this.http.get(`${this.baseURL}/${collection}/${id}`);
+  }
+
+  createModel(collection: string, modelData: any): any {
+    return this.http.post(`${this.baseURL}/${collection}`, modelData, this.httpOptions);
+  }
+
+  updateModel(collection: string, id: string, modelData: any): any {
+    return this.http.put(`${this.baseURL}/${collection}/${id}`, modelData, this.httpOptions);
+  }
+
+  deleteModel(collection: string, id: string): any {
+    return this.http.delete(`${this.baseURL}/${collection}/${id}`, this.httpOptions);
+  }
+    
+  // ----------------- Search ----------------- //
+  search(collection: string, term: string): Observable<SearchResponse> {
+    return this.http.get<SearchResponse>(`${this.baseURL}/search/${collection}/${term}`);
+  }
+
+  // ----------------- Update Image ----------------- //
+  updateImage(collection: string, id: string, file: any): any {
+    return this.http.put(`${this.baseURL}/uploads/${collection}/${id}`, file);
+  }
 }

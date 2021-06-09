@@ -1,4 +1,30 @@
-<div class="products-list">
-    <app-product *ngFor="let product of products"
-                 [product]="product"></app-product>
+<app-products-navbar></app-products-navbar>
+<div class="products">
+    <div class="products-filters">
+        <div class="spinner" *ngIf="loading"></div>
+        <app-filter [options]="genders" 
+                    [name]="'Género'"
+                    [collection]="'genders'"
+                    [showBrowser]="false"
+                    *ngIf="genders.length > 0"></app-filter>
+        <div class="spinner" *ngIf="loading"></div>
+        <app-filter [options]="brands" 
+                    [name]="'Marca'"
+                    [collection]="'brands'"
+                    [showBrowser]="true"            
+                    *ngIf="brands.length > 0"></app-filter>
+        <div class="spinner" *ngIf="loading"></div>
+        <app-filter [options]="colors" 
+                    [name]="'Color'"
+                    [collection]="'colors'"
+                    [showBrowser]="true"
+                    *ngIf="colors.length > 0"></app-filter>
+    </div>
+    <div class="products-list">
+        <div class="spinner" *ngIf="loading"></div>
+        <div class="products-cards" *ngIf="products">
+            <app-product *ngFor="let product of products"
+                        [product]="product"></app-product>
+        </div>
+    </div>
 </div>

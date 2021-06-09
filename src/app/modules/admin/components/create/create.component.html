@@ -1,0 +1,110 @@
+<div class="create-container">
+    <form class="model-form" 
+         [formGroup]="modelForm"
+         (ngSubmit)="create()">
+        <h1 class="model-form__title">Crear {{ modelName }}</h1>
+        <div class="model-form__field">
+            <label for="nombre" class="model-form__label">Nombre</label>
+            <input id="nombre" 
+                   type="text" 
+                   class="model-form__input"
+                   formControlName="name"
+                   [class.invalid-input]="validateField('name')">
+            <span class="error-message" 
+                  *ngIf="validateField('name')">Este campo es obligatorio</span>
+        </div>
+        <div class="model-form__field" *ngIf="model === 'products'">
+            <label for="descripcion" class="model-form__label">Descripción</label>
+            <textarea id="descripcion" 
+                      cols="30" 
+                      rows="5" 
+                      class="model-form__textarea"
+                      formControlName="description"
+                      [class.invalid-input]="validateField('description')"></textarea>
+            <span class="error-message" 
+                  *ngIf="validateField('description')">Este campo es obligatorio</span>
+        </div>
+        <div class="model-form__field" *ngIf="model === 'products'">
+            <label for="descripcion" class="model-form__label">Precio</label>
+            <input id="descripcion" 
+                   type="number" 
+                   class="model-form__input"
+                   formControlName="price"
+                   [class.invalid-input]="validateField('price')">
+            <span class="error-message" 
+                   *ngIf="validateField('price')">Este campo es obligatorio</span>
+        </div>
+        <div class="model-form__field" *ngIf="model === 'products'">
+            <label for="marca" class="model-form__label">Marca</label>
+            <select id="marca" 
+                    class="model-form__select" 
+                    formControlName="brand"
+                    [class.invalid-input]="validateField('brand')">
+                <option value="">Seleccione una marca</option>
+                <option [value]="brand._id" 
+                        class="model-form__option"
+                        *ngFor="let brand of brands">{{ brand.name }}</option>
+            </select>
+            <span class="error-message" 
+                  *ngIf="validateField('brand')">Este campo es obligatorio</span>
+        </div>
+        <div class="model-form__field" *ngIf="model === 'products'">
+            <label for="genero" class="model-form__label">Género</label>
+            <select id="genero" 
+                    class="model-form__select" 
+                    formControlName="gender"
+                    [class.invalid-input]="validateField('gender')">
+                <option value="">Seleccione un género</option>
+                <option [value]="gender._id" 
+                        class="model-form__option"
+                        *ngFor="let gender of genders">{{ gender.name }}</option>
+            </select>
+            <span class="error-message" 
+                  *ngIf="validateField('gender')">Este campo es obligatorio</span>
+        </div>
+        <div class="model-form__field" *ngIf="model === 'products'">
+            <label for="color" class="model-form__label">Color</label>
+            <div class="model-form-colors">
+                <div class="model-form-color" *ngFor="let color of colors">
+                    <input [id]="color._id" 
+                           type="checkbox" 
+                           class="model-form-color__checkbox"
+                           (change)="addColor(color._id, $event)">
+                    <label [for]="color._id" class="model-form-color__label">{{ color.name }}</label>
+                </div>
+            </div>
+            <span class="error-message" 
+                  *ngIf="arrayColors.length === 0">Seleccione almenos una opción</span>
+        </div>
+        <div class="model-form__field" *ngIf="model === 'categories'">
+            <label for="color" class="model-form__label">Subcategorias</label>
+            <div class="model-form-colors">
+                <div class="model-form-color" *ngFor="let subcategory of subcategories">
+                    <input [id]="subcategory._id" 
+                           type="checkbox" 
+                           class="model-form-color__checkbox"
+                           (change)="addSubcategory(subcategory._id, $event)"
+                           [class.invalid-input]="validateField('subcategory')">
+                    <label [for]="subcategory._id" class="model-form-color__label">{{ subcategory.name }}</label>
+                </div>
+            </div>
+            <span class="error-message" 
+                  *ngIf="arraySubcategories.length === 0">Seleccone almenos una opción</span>
+        </div>
+        <div class="model-form__field" *ngIf="model === 'products'">
+            <label for="subcategoria" class="model-form__label">Subcategoria</label>
+            <select id="subcategoria" 
+                    class="model-form__select" 
+                    formControlName="subcategory"
+                    [class.invalid-input]="validateField('subcategory')">
+                <option value="">Seleccione una subcategoría</option>
+                <option [value]="subcategory._id" 
+                        class="model-form__option"
+                        *ngFor="let subcategory of subcategories">{{ subcategory.name }}</option>
+            </select>
+            <span class="error-message" 
+                  *ngIf="validateField('subcategory')">Este campo es obligatorio</span>
+        </div>
+        <button class="model-form__button">Crear</button>
+    </form>
+</div>

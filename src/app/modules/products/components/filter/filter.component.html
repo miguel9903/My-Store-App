@@ -1,0 +1,21 @@
+<div class="filter">
+    <h2 class="filter__title">{{ name }}</h2>
+    <div class="filter-browser" *ngIf="showBrowser">
+        <input type="text" 
+               (keyup)="search(term.value)"
+               class="filter-browser__input"
+               #term>
+        <i class="fa fa-search filter-browser__icon"></i>
+    </div>
+    <small class="search-results-message" 
+           *ngIf="showBrowser && options.length === 0">Sin resultados</small>
+    <div class="filter__options" *ngIf="options.length > 0">
+        <div class="filter__option" *ngFor="let option of options">
+            <input [id]="option._id" type="checkbox" class="filter__check">
+            <label [for]="option._id" class="filter__label">{{ option.name }}</label>
+        </div>
+    </div>
+    <div class="filter__button">
+        <button>Aplicar</button>
+    </div>
+</div>

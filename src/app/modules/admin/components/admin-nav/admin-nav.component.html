@@ -1,16 +1,36 @@
 <header class="header">
     <nav class="nav">
-        <ul class="main-nav">
-            <li class="main-nav__item" routerLinkActive="active">
-                <a class="main-nav__link" routerLink="/admin/create">Crear producto</a>
+        <ul class="admin-menu">
+            <li class="admin-menu__item">
+                <a class="admin-menu__link">Ver</a>
+                <ul class="admin-submenu">
+                    <li class="admin-submenu__item">
+                        <a class="admin-submenu__link" routerLink="/admin/list/products">Productos</a>
+                    </li>
+                    <li class="admin-submenu__item">
+                        <a class="admin-submenu__link" routerLink="/admin/list/categories">Categorías</a>
+                    </li>
+                    <li class="admin-submenu__item">
+                        <a class="admin-submenu__link" routerLink="/admin/list/subcategories">Subcategorías</a>
+                    </li>
+                    <li class="admin-submenu__item">
+                        <a class="admin-submenu__link" routerLink="/admin/list/genders">Géneros</a>
+                    </li>
+                    <li class="admin-submenu__item">
+                        <a class="admin-submenu__link" routerLink="/admin/list/brands">Marcas</a>
+                    </li>
+                    <li class="admin-submenu__item">
+                        <a class="admin-submenu__link" routerLink="/admin/list/colors">Colores</a>
+                    </li>
+                </ul>
             </li>
-            <li class="main-nav__item" routerLinkActive="active">
-                <a class="main-nav__link" routerLink="/admin/product-list">Ver productos</a>
+            <li class="admin-menu__item">
+                <a class="admin-menu__link" routerLink="/admin/profile">Mi perfil</a>
             </li>
         </ul>
     </nav>
     <div class="logout">
-        <button class="logout__buttom">
+        <button (click)="logOut()" class="logout__buttom">
             <i class="fa fa-sign-out"></i> Salir
         </button>
     </div>

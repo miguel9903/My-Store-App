@@ -1,0 +1,33 @@
+<div class="login">
+    <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="login-form__image">
+            <img src="assets/images/user.png" alt="">
+        </div>
+        <h1 class="login-form__title">Inicio de sesión</h1>
+        <div class="login-form__field">
+            <label for="" class="login-form__label">Correo electrónico</label>
+            <input type="text" 
+                   class="login-form__input"
+                   formControlName="email"
+                   [class.invalid-input]="validateField('email')">
+            <small class="error-message"
+                   *ngIf="validateField('email')">Este campo es obligatorio</small>
+        </div>
+        <div class="login-form__field">
+            <label for="" class="login-form__label">Contraseña</label>
+            <input type="password" 
+                   class="login-form__input"
+                   formControlName="password"
+                   [class.invalid-input]="validateField('password')">
+            <small class="error-message"
+                   *ngIf="validateField('password')">Este campo es obligatorio</small>
+        </div>
+        <div class="login-form__field">
+            <input type="checkbox" 
+                   class="login-form__checkbox"
+                   formControlName="rememberUser">
+            <label for="" class="login-form__label-check">Recordar usuario</label>
+        </div>
+        <button class="login-form__button">Ingresar</button>
+    </form>
+</div>

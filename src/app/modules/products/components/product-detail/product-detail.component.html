@@ -3,20 +3,23 @@
         <img [src]="product.image" [alt]="product.name" class="product__image">
     </div>
     <div class="product-info">
-        <h2 class="product-title">Información del producto</h2>
-        <ul class="product-info-list">
-            <li class="product-info-list__item">
-                <b>Nombre: </b>{{ product.name }}
-            </li>
-            <li class="product-info-list__item">
-                <b>Descripción: </b>{{ product.description }}
-            </li>
-            <li class="product-info-list__item">
-                <b>Precio: </b>{{ product.price | currency}}
-            </li>
-        </ul>
-        <button class="back-button" routerLink="/products">
-            <i class="fa fa-arrow-left"></i> Regresar
-        </button>
+        <div class="product-datails">
+            <h2 class="product__title">{{ product.name }}</h2>
+            <p class="product__description">{{ product.description }}</p>
+            <span class="product__price">{{ product.price | currency }}</span>
+            <h2 class="product-detail__title">Detalles del producto</h2>
+            <ul class="product-detail-list">
+                <li class="product-detail-list__item">
+                    <b>Género: </b>{{ product.gender.name }}
+                </li>
+                <li class="product-detail-list__item">
+                    <b>Marca: </b>{{ product.brand.name }}
+                </li>
+                <li class="product-detail-list__item">
+                    <b>Color: </b>{{ product.color | joinProductColors}}
+                </li>
+            </ul>
+            <button class="product__button-cart">Agregar al carrito</button>
+        </div>
     </div>
 </div>

@@ -1,19 +1,19 @@
 <div class="product">
     <div class="product-header">
-        <h2 class="product__title">{{ product.name }}</h2>
-        <div class="product__image-container">
-            <img [src]="product.image" class="product__image" [alt]="product.name"> 
-        </div>
+        <img [src]="product.image" class="product-image" [alt]="product.name"> 
     </div>
-    <div class="product__body">
+    <div class="product-body">
         <span class="product__price">{{ product.price | currency }}</span>
-        <p class="product__description">{{ product.description }}</p>
+        <div class="product__info">
+            <h2 class="product__name">{{ product.name }}</h2>
+            <p class="product__description">{{ product.description | cutProductDescription}}</p>
+        </div>
         <div class="product-buttons">
-            <button class="product__button" (click)="viewProductDetail(product.id)">
-                <i class="fa fa-eye"></i> Ver detalle
+            <button class="product__button" (click)="viewProductDetail(product._id)">
+               Ver detalle
             </button>
-            <button class="product__button">
-                <i class="fa fa-shopping-cart"></i> Agregar al carrito
+            <button class="product__button" title="Agregar al carrito">
+                <i class="fa fa-shopping-cart"></i>
             </button>
         </div>
     </div>

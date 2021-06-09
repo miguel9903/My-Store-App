@@ -1,82 +1,70 @@
-.header {
+.main-nav {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
     justify-content: space-between;
-    min-width: 320px;
-    padding: 10px 20px;
+    align-items: center;
     background-color: var(--light-blue);
 }
 
-.main-nav {
+.main-menu {
     margin-top: 0;
     margin-left: 0;
     margin-bottom: 0;
     padding-left: 0;
     list-style-type: none;
-    display: flex;
-    flex-direction: column;
 }
 
-.main-nav__item {
-    padding: 10px 20px;
-}
-
-.main-nav__link {
+.main-menu__item {
+    display: inline-block;
+    padding: 15px 20px;
     color: var(--white);
-    text-decoration: none;
 }
 
-.main-nav__link:hover {
-    text-shadow: 2px 2px 2px var(--black);
+.main-menu__link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.main-menu-buttons {
+    display: flex;
+    padding: 0px 15px;
+}
+
+.cart {
+    position: relative;
+}
+
+.cart__counter {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.2rem;
+    background-color: red;
+    border: none;
+    border-radius: 50%;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
+
+.cart__button,
+.login__button {
+    margin: 0px 2px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.cart__button:hover,
+.login__button:hover {
+    box-shadow: 2px 2px 5px var(--black);
 }
 
 .active {
     text-shadow: 1px 1px 1px var(--black),
                  2px 2px 1px var(--black),
-                 2px 3px 1px var(--dark-blue),
-                 2px 4px 1px var(--dark-blue);
+                 2px 3px 1px var(--dark-blue);
 }
 
-.cart {
-   position: relative;
-}
-
-.cart__button {
-    padding: 10px 20px;
-    background-color: var(--white);
-    border: none;
-    border-radius: 5px;
-}
-
-.cart__button:hover {
-    box-shadow: 2px 2px 5px var(--black);
-}
-
-.cart__button i {
-    margin-right: 5px;
-}
-
-.cart__counter {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    padding: 2px;
-    color: var(--white);
-    text-align: center;
-    line-height: 18px;
-    font-size: 80%;
-    background-color: red;
-    border-radius: 50%;
-    position: absolute;
-    top: -7px;
-    right: -7px;
-}
-
-/* Media Queries */
-
-@media screen and (min-width: 600px) {
-    .main-nav {
-        flex-direction: row;
-    }
-}

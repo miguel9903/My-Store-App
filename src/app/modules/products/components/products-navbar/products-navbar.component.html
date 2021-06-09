@@ -1,0 +1,15 @@
+<nav class="products-nav">
+    <ul class="products-menu">
+        <li class="products-menu__item" *ngFor="let category of categories">
+            <a href="#" class="products-menu__link">
+                {{ category.name }}
+            </a>
+            <ul class="products-submenu">
+                <li class="products-submenu__item" 
+                    *ngFor="let subcategory of category.subcategories">
+                    <a class="products-submenu__link" href="#">{{ subcategory.name }}</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>

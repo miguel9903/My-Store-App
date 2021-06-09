@@ -1,0 +1,14 @@
+<div class="update-image-container">
+    <div class="model-form">
+        <h1 class="model-form__title">Actualizar Imagen {{ modelName }}</h1>
+        <div class="model-form__field">
+            <label for="imagen" class="model-form__label">Seleccione una imagen:</label>
+            <input id="imagen" 
+                   type="file" 
+                   class="model-form__input"
+                   (change)="fileChange($event)">
+        </div>
+        <button class="model-form__button"
+        (click)="updateImage()">Actualizar</button>
+    </div>
+</div>

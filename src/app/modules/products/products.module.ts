@@ -5,12 +5,20 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { ProductComponent } from './components/product/product.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductsRoutingModule } from './products-routing.module';
+import { CutProductDescriptionPipe } from './pipes/cut-product-description.pipe';
+import { JoinProductColorsPipe } from './pipes/join-product-colors.pipe';
+import { FilterComponent } from './components/filter/filter.component';
+import { ProductsNavbarComponent } from './components/products-navbar/products-navbar.component';
 
 @NgModule({
     declarations: [
         ProductComponent,
         ProductsComponent,
-        ProductDetailComponent
+        ProductDetailComponent,
+        CutProductDescriptionPipe,
+        JoinProductColorsPipe,
+        FilterComponent,
+        ProductsNavbarComponent
     ],
     imports: [
         CommonModule,

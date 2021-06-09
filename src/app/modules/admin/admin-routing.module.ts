@@ -1,26 +1,41 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminNavComponent } from './components/admin-nav/admin-nav.component';
+import { ListComponent } from './components/list/list.component';
 import { LayoutAdminComponent } from './components/layout-admin/layout-admin.component';
-import { ProductFormComponent } from './components/product-form/product-form.component';
-import { ProductListComponent } from './components/product-list/product-list.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { CreateComponent } from './components/create/create.component';
+import { UpdateComponent } from './components/update/update.component';
+import { UpdateImageComponent } from './components/update-image/update-image.component';
+
 
 const routes: Routes = [
   { 
     path: '',
     component: LayoutAdminComponent,
     children: [
-      { 
-        path: 'create', 
-        component: ProductFormComponent 
+      {
+        path: 'list/:model',
+        component: ListComponent
       },
       {
-        path: 'product-list',
-        component: ProductListComponent
+        path: 'create/:model',
+        component: CreateComponent
+      },
+      {
+        path: 'update/:model/:id',
+        component: UpdateComponent
+      },
+      {
+        path: 'update-image/:model/:id',
+        component: UpdateImageComponent
+      },
+      {
+        path: 'profile',
+        component: UserProfileComponent
       },
       {
         path: '',
-        redirectTo: 'create'
+        redirectTo: 'list/products'
       }
     ]
   }

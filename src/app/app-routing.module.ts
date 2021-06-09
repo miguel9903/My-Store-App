@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
-import { AdminGuard } from './guards/admin.guard';
+import { AuthGuard } from './guards/auth.guard';
 import { LayoutComponent } from './modules/layout/layout.component';
-import { PageNotFoundRoutingModule } from './modules/page-not-found/page-not-found-routing.module';
 
 const routes: Routes = [
     { 
@@ -23,7 +22,6 @@ const routes: Routes = [
             },
             {
                 path: 'contact',
-                // canActivate: [AdminGuard],
                 loadChildren: () => import('./modules/contact/contact.module').then(m => m.ContactModule)
             },
             {
@@ -31,14 +29,19 @@ const routes: Routes = [
                 loadChildren: () => import('./modules/cart/cart.module').then(m => m.CartModule)
             },
             {
+                path: 'login',
+                loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule)
+            },
+            {
                 path: '',
                 pathMatch: 'full',
-                redirectTo: 'home'
+                redirectTo: 'products'
             }
         ]
     },
     {
         path: 'admin',
+        canActivate: [AuthGuard],
         loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
     },
     {

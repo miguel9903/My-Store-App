@@ -1,24 +1,28 @@
 <header class="header">
-    <nav class="nav">
-        <ul class="main-nav">
-            <li class="main-nav__item" routerLinkActive="active">
-                <a class="main-nav__link" routerLink="/home">Inicio</a>
+    <nav class="main-nav">
+        <ul class="main-menu">
+            <li class="main-menu__item" routerLinkActive="active">
+                <a class="main-menu__link" routerLink="/products">Productos</a>
             </li>
-            <li class="main-nav__item" routerLinkActive="active">
-                <a class="main-nav__link" routerLink="/products">Productos</a>
+<!--             <li class="main-menu__item" routerLinkActive="active">
+                <a class="main-menu__link" routerLink="/about">Sobre nosotros</a>
             </li>
-            <li class="main-nav__item" routerLinkActive="active">
-                <a class="main-nav__link" routerLink="/about">Sobre nosotros</a>
-            </li>
-            <li class="main-nav__item" routerLinkActive="active">
-                <a class="main-nav__link" routerLink="/contact">Contacto</a>
-            </li>
+            <li class="main-menu__item" routerLinkActive="active">
+                <a class="main-menu__link" routerLink="/contact">Contacto</a>
+            </li> -->
         </ul>
+        <div class="main-menu-buttons">
+            <div class="login">
+                <button class="login__button" routerLink="/login">
+                    <i class="fa fa-sign-in"></i> Ingresar
+                </button>
+            </div>
+            <div class="cart">
+                <span class="cart__counter">1</span>
+                <button class="cart__button" routerLink="/cart">
+                    <i class="fa fa-shopping-cart"></i> Carrito
+                </button>
+            </div>
+        </div>
     </nav>
-    <div class="cart">
-        <span class="cart__counter">1</span>
-        <button class="cart__button" routerLink="/cart">
-            <i class="fa fa-shopping-cart"></i> Carrito
-        </button>
-    </div>
 </header>
